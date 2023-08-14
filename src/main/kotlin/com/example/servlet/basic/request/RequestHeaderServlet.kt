@@ -11,6 +11,7 @@ class RequestHeaderServlet : HttpServlet() {
         printStartLine(request)
         printHeaders(request)
         printHeaderUtils(request)
+        printEtc(request)
     }
 
     private fun printStartLine(request: HttpServletRequest) {
@@ -53,11 +54,12 @@ class RequestHeaderServlet : HttpServlet() {
         println(
             "request.getServerName() = " +
                     request.serverName
-        ) //Host 헤더 println("request.getServerPort() = " + request.getServerPort()); //Host 헤더 println();
+        ) //Host 헤더
+        println("request.getServerPort() = " + request.serverPort); //Host 헤더 println();
         println("[Accept-Language 편의 조회]")
 
         request.locales.asIterator()
-            .forEachRemaining{locale -> println("locale = $locale")}
+            .forEachRemaining { locale -> println("locale = $locale") }
 
         println("request.getLocale() = " + request.locale)
         println()
@@ -85,4 +87,36 @@ class RequestHeaderServlet : HttpServlet() {
         println()
     }
 
+    private fun printEtc(request: HttpServletRequest) {
+        println("--- 기타 조회 start ---")
+        println("[Remote 정보]")
+        println(
+            "request.getRemoteHost() = " +
+                    request.remoteHost
+        ) //
+        println(
+            "request.getRemoteAddr() = " +
+                    request.remoteAddr
+        ) //
+        println(
+            "request.getRemotePort() = " +
+                    request.remotePort
+        ) //
+        println()
+        println("[Local 정보]")
+        println(
+            "request.getLocalName() = " +
+                    request.localName
+        ) //
+        println(
+            "request.getLocalAddr() = " +
+                    request.localAddr
+        ) //
+        println(
+            "request.getLocalPort() = " +
+                    request.localPort
+        ) //
+        println("--- 기타 조회 end ---")
+        println()
+    }
 }
