@@ -6,10 +6,11 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 
 @WebServlet(name = "requestHeaderServlet", urlPatterns = ["/request-header"])
-class RequestHeaderServlet : HttpServlet(){
+class RequestHeaderServlet : HttpServlet() {
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
         printStartLine(request)
         printHeaders(request)
+        printHeaderUtils(request)
     }
 
     private fun printStartLine(request: HttpServletRequest) {
@@ -41,8 +42,47 @@ class RequestHeaderServlet : HttpServlet(){
 //        }
 
         request.headerNames.asIterator()
-            .forEachRemaining{ println("headerName: $it") }
+            .forEachRemaining { println("headerName: $it") }
 
         println("--- Header - end ---")
     }
+
+    private fun printHeaderUtils(request: HttpServletRequest) {
+        println("--- Header 편의 조회 start ---")
+        println("[Host 편의 조회]");
+        println(
+            "request.getServerName() = " +
+                    request.serverName
+        ) //Host 헤더 println("request.getServerPort() = " + request.getServerPort()); //Host 헤더 println();
+        println("[Accept-Language 편의 조회]")
+
+        request.locales.asIterator()
+            .forEachRemaining{locale -> println("locale = $locale")}
+
+        println("request.getLocale() = " + request.locale)
+        println()
+        println("[cookie 편의 조회]")
+        if (request.cookies != null) {
+            for (cookie in request.cookies) {
+                println(cookie.name + ": " + cookie.value)
+            }
+        }
+        println()
+        println("[Content 편의 조회]")
+        println(
+            "request.getContentType() = " +
+                    request.contentType
+        )
+        println(
+            "request.getContentLength() = " +
+                    request.contentLength
+        )
+        println(
+            "request.getCharacterEncoding() = " +
+                    request.characterEncoding
+        )
+        println("--- Header 편의 조회 end ---")
+        println()
+    }
+
 }
