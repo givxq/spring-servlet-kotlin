@@ -31,9 +31,9 @@ class ReponseHeaderServlet : HttpServlet() {
         //Status Code 302
         //Location /basic/hello-form.html
 
-        response.status = HttpServletResponse.SC_FOUND
-        response.setHeader("Location", "/basic/hello-form.html")
-//        response.sendRedirect("/basic/hello-form.html")
+//        response.status = HttpServletResponse.SC_FOUND
+//        response.setHeader("Location", "/basic/hello-form.html")
+        response.sendRedirect("/basic/hello-form.html")
     }
 
     private fun cookie(response: HttpServletResponse) {
