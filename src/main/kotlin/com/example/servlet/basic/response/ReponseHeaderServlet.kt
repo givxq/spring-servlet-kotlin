@@ -21,9 +21,19 @@ class ReponseHeaderServlet : HttpServlet() {
         //[Header 편의 메서드]
         content(response)
         cookie(response)
+        redirect(response)
 
         val writer = response.writer
         writer.println("ok")
+    }
+
+    private fun redirect(response: HttpServletResponse) {
+        //Status Code 302
+        //Location /basic/hello-form.html
+
+        response.status = HttpServletResponse.SC_FOUND
+        response.setHeader("Location", "/basic/hello-form.html")
+//        response.sendRedirect("/basic/hello-form.html")
     }
 
     private fun cookie(response: HttpServletResponse) {
