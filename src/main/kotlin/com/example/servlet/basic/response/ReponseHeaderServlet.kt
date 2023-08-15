@@ -1,6 +1,7 @@
 package com.example.servlet.basic.response
 
 import jakarta.servlet.annotation.WebServlet
+import jakarta.servlet.http.Cookie
 import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -19,9 +20,16 @@ class ReponseHeaderServlet : HttpServlet() {
 
         //[Header 편의 메서드]
         content(response)
+        cookie(response)
 
         val writer = response.writer
         writer.println("ok")
+    }
+
+    private fun cookie(response: HttpServletResponse) {
+        val cookie = Cookie("myCookie", "good")
+        cookie.maxAge = 600
+        response.addCookie(cookie)
     }
 
     private fun content(response: HttpServletResponse) {
