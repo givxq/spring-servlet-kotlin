@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 
-@WebServlet(name = "responseHtmlServlet", urlPatterns = ["reponse-html"])
+@WebServlet(name = "responseHtmlServlet", urlPatterns = ["/response-html"])
 class ResponseHtmlServlet :HttpServlet() {
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
         //Content-Type: text/html;charset=utf-8
