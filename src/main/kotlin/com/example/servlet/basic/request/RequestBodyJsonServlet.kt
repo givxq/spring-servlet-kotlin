@@ -2,6 +2,7 @@ package com.example.servlet.basic.request
 
 import com.example.servlet.basic.HelloData
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
@@ -12,7 +13,7 @@ import java.nio.charset.StandardCharsets
 @WebServlet(name = "requestBodyServlet", urlPatterns = ["/request-body-json"])
 class RequestBodyJsonServlet : HttpServlet() {
 
-    private val objectMapper = ObjectMapper()
+    private val objectMapper = ObjectMapper().registerKotlinModule()
 
     override fun service(requset: HttpServletRequest, response: HttpServletResponse) {
         val inputStream = requset.inputStream
@@ -21,6 +22,7 @@ class RequestBodyJsonServlet : HttpServlet() {
         println("messageBody = $messageBody")
 
         val helloData = objectMapper.readValue(messageBody, HelloData::class.java)
-        println("helloData = $helloData")
+        println("helloData.userName = ${helloData.username}")
+        println("helloData.age = ${helloData.age}")
     }
 }
