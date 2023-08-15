@@ -1,5 +1,7 @@
 package com.example.servlet.basic.domain.member
 
+import com.example.servlet.domain.member.Member
+import com.example.servlet.domain.member.MemberRepository
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.equals.shouldBeEqual

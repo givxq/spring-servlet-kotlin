@@ -1,4 +1,4 @@
-package com.example.servlet.basic.domain.member
+package com.example.servlet.domain.member
 
 import kotlin.properties.Delegates
 
