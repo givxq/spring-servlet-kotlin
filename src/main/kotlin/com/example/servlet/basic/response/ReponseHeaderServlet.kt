@@ -17,7 +17,15 @@ class ReponseHeaderServlet : HttpServlet() {
         response.setHeader("Pragma", "no-cache")
         response.setHeader("my-header", "hello")
 
+        //[Header 편의 메서드]
+        content(response)
+
         val writer = response.writer
         writer.println("ok")
+    }
+
+    private fun content(response: HttpServletResponse) {
+        response.contentType = "text/plain"
+        response.characterEncoding = "utf-8"
     }
 }
