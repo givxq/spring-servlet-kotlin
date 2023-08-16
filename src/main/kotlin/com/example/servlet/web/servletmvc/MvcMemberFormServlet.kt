@@ -11,6 +11,5 @@ class MvcMemberFormServlet : HttpServlet() {
         val viewPath = "/WEB-INF/views/new-form.jsp"
         val dispatcher = request.getRequestDispatcher(viewPath)
         dispatcher.forward(request, response)
-
     }
 }
