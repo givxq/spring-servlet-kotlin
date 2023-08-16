@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse
 
 @WebServlet(name = "memberSaveServlet", urlPatterns = ["/servlet/members/save"])
 class MemberSaveServlet : HttpServlet() {
-    val memberRepository = MemberRepository
+    private val memberRepository = MemberRepository
 
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
         println("MemberSaveServlet.service")
