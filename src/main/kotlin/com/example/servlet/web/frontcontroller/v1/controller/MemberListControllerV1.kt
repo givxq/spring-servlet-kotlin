@@ -1,15 +1,14 @@
-package com.example.servlet.web.servletmvc
+package com.example.servlet.web.frontcontroller.v1.controller
 
 import com.example.servlet.domain.member.MemberRepository
-import jakarta.servlet.annotation.WebServlet
-import jakarta.servlet.http.HttpServlet
+import com.example.servlet.web.frontcontroller.v1.ControllerV1
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 
-@WebServlet(name = "mcvMemberListServlet", urlPatterns = ["/servlet-mvc/members/"])
-class MvcMemberListServlet : HttpServlet() {
-    val memberRepository = MemberRepository
-    override fun service(request: HttpServletRequest, response: HttpServletResponse) {
+class MemberListControllerV1 : ControllerV1 {
+    private val memberRepository = MemberRepository
+
+    override fun process(request: HttpServletRequest, response: HttpServletResponse) {
         val members = memberRepository.findAll()
 
         request.setAttribute("members", members)
