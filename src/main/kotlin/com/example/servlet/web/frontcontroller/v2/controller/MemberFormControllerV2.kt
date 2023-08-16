@@ -7,6 +7,6 @@ import jakarta.servlet.http.HttpServletResponse
 
 class MemberFormControllerV2 : ControllerV2 {
     override fun process(request: HttpServletRequest, response: HttpServletResponse): MyView {
-        return MyView("WEB-INF/views/new-form.jsp")
+        return MyView("/WEB-INF/views/new-form.jsp")
     }
 }

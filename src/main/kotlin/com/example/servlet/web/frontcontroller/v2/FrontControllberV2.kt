@@ -33,6 +33,7 @@ class FrontControllerServletV2 : HttpServlet() {
             return
         }
 
-        controller.process(request, response)
+        val view = controller.process(request, response)
+        view.render(request, response)
     }
 }
