@@ -14,15 +14,17 @@ class FrontControllerServletV1 : HttpServlet() {
     private val controllerMap: MutableMap<String, ControllerV1> = mutableMapOf()
 
     init {
-        controllerMap["front-controller/v1/members/new-form"] = MemberFormControllerV1()
-        controllerMap["front-controller/v1/members/save"] = MemberSaveControllerV1()
-        controllerMap["front-controller/v1/members"] = MemberListControllerV1()
+        controllerMap["/front-controller/v1/members/new-form"] = MemberFormControllerV1()
+        controllerMap["/front-controller/v1/members/save"] = MemberSaveControllerV1()
+        controllerMap["/front-controller/v1/members"] = MemberListControllerV1()
     }
 
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
         println("FrontControllerServletV1.service")
 
         val requestURI = request.requestURI
+
+        println("requestURI = $requestURI")
 
         val controller = controllerMap[requestURI]
 
