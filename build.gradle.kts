@@ -33,6 +33,13 @@ dependencies {
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.kotest:kotest-runner-junit5:5.6.2")
+
+    //jsp
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
+    implementation("jakarta.servlet:jakarta.servlet-api")//스프링부트 3.0 이상
+    implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api")//스프링부트 3.0 이상
+    implementation("org.glassfish.web:jakarta.servlet.jsp.jstl")//스프링부트 3.0 이상
+    //
 }
 
 tasks.withType<KotlinCompile> {
