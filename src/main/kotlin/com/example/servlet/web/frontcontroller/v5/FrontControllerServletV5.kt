@@ -5,6 +5,7 @@ import com.example.servlet.web.frontcontroller.v3.controller.MemberFormControlle
 import com.example.servlet.web.frontcontroller.v3.controller.MemberListControllerV3
 import com.example.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3
 import com.example.servlet.web.frontcontroller.v5.adapter.ControllerV3HandlerAdapter
+import com.example.servlet.web.frontcontroller.v5.adapter.ControllerV4HandlerAdapter
 import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
@@ -21,13 +22,20 @@ class FrontControllerServletV5 : HttpServlet() {
     }
 
     private fun initHandlerMapping() {
+        //V3
         handlerMappingMap["/front-controller/v5/v3/members/new-form"] = MemberFormControllerV3()
         handlerMappingMap["/front-controller/v5/v3/members/save"] = MemberSaveControllerV3()
         handlerMappingMap["/front-controller/v5/v3/members"] = MemberListControllerV3()
+
+        //V4
+        handlerMappingMap["/front-controller/v5/v4/members/new-form"] = MemberFormControllerV3()
+        handlerMappingMap["/front-controller/v5/v4/members/save"] = MemberSaveControllerV3()
+        handlerMappingMap["/front-controller/v5/v4/members"] = MemberListControllerV3()
     }
 
     private fun initHandlerAdapters() {
         handlerAdapters.add(ControllerV3HandlerAdapter())
+        handlerAdapters.add(ControllerV4HandlerAdapter())
     }
 
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
