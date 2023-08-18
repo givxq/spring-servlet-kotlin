@@ -1,3 +1,11 @@
+spring:
+  mvc:
+    view:
+      prefix: "/WEB-INF/views/"
+      suffix: ".jsp"
+  output:
+    ansi:
+      enabled: ALWAYS
 logging:
   level:
     org.apache.coyote.http11: debug
