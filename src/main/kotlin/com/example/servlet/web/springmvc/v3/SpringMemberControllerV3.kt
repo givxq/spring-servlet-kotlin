@@ -4,6 +4,8 @@ import com.example.servlet.domain.member.Member
 import com.example.servlet.domain.member.MemberRepository
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.ModelAndView
@@ -13,10 +15,10 @@ import org.springframework.web.servlet.ModelAndView
 class SpringMemberControllerV3 {
     val memberRepository = MemberRepository
 
-    @RequestMapping("/new-form")
+    @GetMapping("/new-form")
     fun newForm() = "new-form"
 
-    @RequestMapping("save")
+    @PostMapping("save")
     fun members(
         @RequestParam("username") username: String,
         @RequestParam("age") age: Int,
@@ -32,7 +34,7 @@ class SpringMemberControllerV3 {
         return "save-result"
     }
 
-    @RequestMapping
+    @GetMapping
     fun members(model: Model): String {
         val members = memberRepository.findAll()
         model.addAttribute("members", members)
